@@ -198,6 +198,7 @@
                                     <constraint firstAttribute="height" constant="80" id="kkR-Dc-8c5"/>
                                     <constraint firstAttribute="width" constant="80" id="xbW-44-N53"/>
                                 </constraints>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c5U-c3-ufW">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="422"/>

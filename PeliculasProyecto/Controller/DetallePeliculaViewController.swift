@@ -31,7 +31,6 @@ class DetallePeliculaViewController: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.white
         
         detallePeliculaActivityIndicator.startAnimating()
-        print("DETALLA: \(detallePelicula), \(Movies.self)")
         
         edadPermitidaLabel.text = "13 +"
         edadPermitidaLabel.layer.cornerRadius = edadPermitidaLabel.frame.size.height / 4.5
@@ -91,12 +90,28 @@ class DetallePeliculaViewController: UIViewController {
         trailerPeliculaLabel.layer.cornerRadius = trailerPeliculaLabel.frame.size.height / 4.5
         trailerPeliculaLabel.layer.masksToBounds = true
         
+        detalleTituloPeliculaLabel.adjustsFontSizeToFitWidth = true
         detalleTituloPeliculaLabel.text = detallePelicula?.original_title
         detalleDescripciónTextView.text = detallePelicula?.overview
         detalleDescripciónTextView.isEditable = false
         
-        print("DATA VC: \(detallePelicula?.title)")
-
+        if let peliImage = detallePelicula?.poster_path {
+            let nameImagePeli = "https://image.tmdb.org/t/p/original" + peliImage
+            let cacheString = NSString(string: nameImagePeli)
+            if let cacheImg = self.cache.object(forKey: cacheString) {
+                detallePeliculaImageView.image = cacheImg
+                detallePeliculaActivityIndicator.stopAnimating()
+                detallePeliculaActivityIndicator.hidesWhenStopped = true
+            } else {
+                self.loadImage(from: URL(string: nameImagePeli)) {
+                    [weak self] (image) in
+                    guard let self = self, let image = image else { return }
+                    self.detallePeliculaImageView.image = image
+                    
+                    self.cache.setObject(image, forKey: cacheString)
+                }
+            }
+        }
     }
     
     private func loadImage(from url: URL?, completion: @escaping (UIImage?) -> ()) {
