@@ -224,6 +224,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="getTicketsButton:" destination="Wfc-ZP-XK5" eventType="touchUpInside" id="tiG-OZ-2Ro"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsR-av-HJZ">
                                 <rect key="frame" x="16" y="432" width="60" height="16.333333333333314"/>
@@ -297,7 +300,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sph-Gn-5uX"/>
-                        <color key="backgroundColor" red="0.086274504660000001" green="0.090196087960000004" blue="0.11372549830000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.043137259779999999" green="0.050980389119999997" blue="0.066666662690000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="c5U-c3-ufW" firstAttribute="top" secondItem="GK2-p4-xVu" secondAttribute="top" id="2mA-NH-7as"/>
                             <constraint firstItem="c5U-c3-ufW" firstAttribute="trailing" secondItem="sph-Gn-5uX" secondAttribute="trailing" id="3oc-i1-XhM"/>

@@ -36,7 +36,7 @@ class DetallePeliculaViewController: UIViewController {
         edadPermitidaLabel.layer.cornerRadius = edadPermitidaLabel.frame.size.height / 4.5
         edadPermitidaLabel.layer.masksToBounds = true
         
-        //generoPeliculaLabel.text = detallePelicula?.genre_ids[0]
+        generoPeliculaLabel.adjustsFontSizeToFitWidth = true
         switch detallePelicula?.genre_ids[0] {
         case 28:
             generoPeliculaLabel.text = "Acción"
@@ -124,4 +124,7 @@ class DetallePeliculaViewController: UIViewController {
         }
     }
 
+    @IBAction func getTicketsButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
