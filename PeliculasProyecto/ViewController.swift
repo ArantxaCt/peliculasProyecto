@@ -18,7 +18,8 @@ class ViewController: UIViewController {
     
     var generos: Generos?
     var peliculas: resultados?
-    var cambiaGeneros: Int = 18
+    var cambiaGeneros: Int = 28
+    var infoMovies: Movies?
     
     private let cache = NSCache<NSString, UIImage>()
     private let utilityQueue = DispatchQueue.global(qos: .utility)
@@ -187,5 +188,27 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         return cellMovie!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == generosCollectionView {
+            let current = generos!.genres[indexPath.row]
+            cambiaGeneros = current.id
+            let nothing = generosId(x: cambiaGeneros)
+            
+            allMovies(genero: nothing) {
+                respuesta in
+                self.peliculas = respuesta
+                DispatchQueue.main.async {
+                    () -> Void in
+                    self.peliculasCollectionView.reloadData()
+                }
+            }
+        }
+        
+        if collectionView == peliculasCollectionView {
+            infoMovies = peliculas!.results[indexPath.row]
+            performSegue(withIdentifier: "cellInfo", sender: self)
+        }
     }
 }

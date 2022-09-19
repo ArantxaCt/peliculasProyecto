@@ -177,7 +177,7 @@
                         <outlet property="homeView" destination="iEP-eY-mwE" id="7e1-MB-pCE"/>
                         <outlet property="peliculasCollectionView" destination="azp-09-rCb" id="hZI-ki-9wh"/>
                         <outlet property="typeMoviesSegmentedControl" destination="XKy-Oh-fhd" id="vND-a9-E0x"/>
-                        <segue destination="Wfc-ZP-XK5" kind="show" id="qn3-oi-CqP"/>
+                        <segue destination="Wfc-ZP-XK5" kind="show" identifier="cellInfo" id="qn3-oi-CqP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
