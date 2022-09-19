@@ -30,30 +30,30 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvS-jN-eB8">
-                        <rect key="frame" x="24" y="307.66666666666669" width="50" height="16.333333333333314"/>
+                        <rect key="frame" x="27" y="307.66666666666669" width="60" height="16.333333333333314"/>
                         <color key="backgroundColor" red="0.2823529541" green="0.27843138579999999" blue="0.27843138579999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="nhk-ED-3sW"/>
+                            <constraint firstAttribute="width" constant="60" id="nhk-ED-3sW"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJg-Nk-YEA">
-                        <rect key="frame" x="82" y="307.66666666666669" width="86" height="16.333333333333314"/>
+                        <rect key="frame" x="95" y="307.66666666666669" width="60" height="16.333333333333314"/>
                         <color key="backgroundColor" red="0.2823529541" green="0.27843138579999999" blue="0.27843138579999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="86" id="C3A-vM-MhD"/>
+                            <constraint firstAttribute="width" constant="60" id="C3A-vM-MhD"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Wi-Jg-tfM">
-                        <rect key="frame" x="176" y="307.66666666666669" width="50" height="16.333333333333314"/>
+                        <rect key="frame" x="163" y="307.66666666666669" width="60" height="16.333333333333314"/>
                         <color key="backgroundColor" red="0.2823529541" green="0.27843138579999999" blue="0.27843138579999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="i0t-pb-MZc"/>
+                            <constraint firstAttribute="width" constant="60" id="i0t-pb-MZc"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,7 +67,8 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="bvS-jN-eB8" secondAttribute="bottom" constant="16" id="32Z-bR-Cyr"/>
-                <constraint firstAttribute="trailing" secondItem="0Wi-Jg-tfM" secondAttribute="trailing" constant="24" id="5ux-gN-ljQ"/>
+                <constraint firstItem="bvS-jN-eB8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="27" id="4bF-Hz-HVV"/>
+                <constraint firstAttribute="trailing" secondItem="0Wi-Jg-tfM" secondAttribute="trailing" constant="27" id="5ux-gN-ljQ"/>
                 <constraint firstItem="bvS-jN-eB8" firstAttribute="top" secondItem="yJX-YC-SRl" secondAttribute="bottom" constant="8" id="6nN-G8-QyP"/>
                 <constraint firstItem="zJg-Nk-YEA" firstAttribute="leading" secondItem="bvS-jN-eB8" secondAttribute="trailing" constant="8" id="9WS-h6-ets"/>
                 <constraint firstItem="0Wi-Jg-tfM" firstAttribute="leading" secondItem="zJg-Nk-YEA" secondAttribute="trailing" constant="8" id="Ec2-zT-oab"/>
@@ -79,7 +80,6 @@
                 <constraint firstItem="DdD-61-azP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="c6G-aX-HVv"/>
                 <constraint firstAttribute="trailing" secondItem="DdD-61-azP" secondAttribute="trailing" id="ch3-zN-3Pq"/>
                 <constraint firstAttribute="trailing" secondItem="Zqq-FR-UNR" secondAttribute="trailing" constant="97" id="d1L-22-7DR"/>
-                <constraint firstItem="bvS-jN-eB8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="egF-ng-8nk"/>
                 <constraint firstItem="Zqq-FR-UNR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="115" id="gRR-ZL-rvp"/>
                 <constraint firstItem="Zqq-FR-UNR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="97" id="mdu-W2-aEi"/>
                 <constraint firstItem="yJX-YC-SRl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="32" id="o3o-FF-tds"/>

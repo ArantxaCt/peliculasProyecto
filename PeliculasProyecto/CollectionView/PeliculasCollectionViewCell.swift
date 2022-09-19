@@ -18,6 +18,10 @@ class PeliculasCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        peliculasEdadLabel.adjustsFontSizeToFitWidth = true
+        peliculasTipeSalaLabel.adjustsFontSizeToFitWidth = true
+        peliculasTipeLabel.adjustsFontSizeToFitWidth = true
+        
         peliculasTipeLabel.layer.cornerRadius = peliculasTipeLabel.frame.size.height/4.5
         peliculasTipeLabel.layer.masksToBounds = true
         

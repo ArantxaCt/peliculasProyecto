@@ -42,7 +42,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEP-eY-mwE">
-                                        <rect key="frame" x="30" y="175.66666666666663" width="330" height="200"/>
+                                        <rect key="frame" x="30" y="185.66666666666663" width="330" height="200"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="batman" translatesAutoresizingMaskIntoConstraints="NO" id="obk-g8-yk7">
                                                 <rect key="frame" x="0.0" y="0.0" width="330" height="200"/>
@@ -51,19 +51,42 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playMovie" translatesAutoresizingMaskIntoConstraints="NO" id="4Ow-WR-GML">
                                                 <rect key="frame" x="122.66666666666666" y="57.666666666666686" width="85" height="85"/>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Batman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OzU-nM-bfy">
+                                                <rect key="frame" x="20" y="14.999999999999998" width="93" height="16.333333333333329"/>
+                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tickets" translatesAutoresizingMaskIntoConstraints="NO" id="Hwa-Xg-1sC">
+                                                <rect key="frame" x="228" y="176.00000000000003" width="92" height="14"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="92" id="4Vx-hS-lke"/>
+                                                    <constraint firstAttribute="height" constant="14" id="EUD-HV-w05"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="vBn-hy-3vB">
+                                                <rect key="frame" x="304" y="10" width="16" height="16"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="labelColor"/>
                                         <constraints>
+                                            <constraint firstItem="OzU-nM-bfy" firstAttribute="leading" secondItem="iEP-eY-mwE" secondAttribute="leading" constant="20" id="0qj-pa-Bqm"/>
                                             <constraint firstAttribute="height" constant="200" id="6N3-6n-vTe"/>
                                             <constraint firstAttribute="bottom" secondItem="4Ow-WR-GML" secondAttribute="bottom" constant="57.5" id="NyD-e0-Ubc"/>
                                             <constraint firstAttribute="trailing" secondItem="4Ow-WR-GML" secondAttribute="trailing" constant="122.5" id="OLT-aO-pvM"/>
+                                            <constraint firstAttribute="trailing" secondItem="vBn-hy-3vB" secondAttribute="trailing" constant="10" id="WCH-Mf-oQb"/>
                                             <constraint firstAttribute="width" constant="330" id="duX-w3-u9a"/>
                                             <constraint firstItem="4Ow-WR-GML" firstAttribute="top" secondItem="iEP-eY-mwE" secondAttribute="top" constant="57.5" id="iQP-nT-LeX"/>
+                                            <constraint firstAttribute="trailing" secondItem="Hwa-Xg-1sC" secondAttribute="trailing" constant="10" id="lGJ-dp-oR5"/>
+                                            <constraint firstItem="vBn-hy-3vB" firstAttribute="top" secondItem="iEP-eY-mwE" secondAttribute="top" constant="10" id="r5T-p1-4yx"/>
+                                            <constraint firstAttribute="trailing" secondItem="OzU-nM-bfy" secondAttribute="trailing" constant="217" id="x6f-bN-NIk"/>
+                                            <constraint firstAttribute="bottom" secondItem="Hwa-Xg-1sC" secondAttribute="bottom" constant="10" id="xzU-zt-NSh"/>
+                                            <constraint firstItem="OzU-nM-bfy" firstAttribute="top" secondItem="iEP-eY-mwE" secondAttribute="top" constant="15" id="zeQ-jo-Suu"/>
                                             <constraint firstItem="4Ow-WR-GML" firstAttribute="leading" secondItem="iEP-eY-mwE" secondAttribute="leading" constant="122.5" id="zs3-SX-wb1"/>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="73e-jy-tbA">
-                                        <rect key="frame" x="30" y="391.66666666666669" width="330" height="44"/>
+                                        <rect key="frame" x="30" y="401.66666666666669" width="330" height="44"/>
                                         <color key="backgroundColor" red="0.085785102060000007" green="0.088466802149999996" blue="0.1148409648" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Dkl-9j-be2"/>
@@ -126,7 +149,7 @@
                                     <constraint firstAttribute="trailing" secondItem="azp-09-rCb" secondAttribute="trailing" id="Gku-Qs-wlm"/>
                                     <constraint firstItem="p2j-I9-i3K" firstAttribute="leading" secondItem="SDA-8k-gry" secondAttribute="leading" constant="30" id="Gz4-W7-kkQ"/>
                                     <constraint firstItem="sCT-ct-x8a" firstAttribute="leading" secondItem="SDA-8k-gry" secondAttribute="leading" constant="30" id="IgW-Fz-0ye"/>
-                                    <constraint firstItem="iEP-eY-mwE" firstAttribute="top" secondItem="p2j-I9-i3K" secondAttribute="bottom" constant="8" id="IyK-72-B3x"/>
+                                    <constraint firstItem="iEP-eY-mwE" firstAttribute="top" secondItem="p2j-I9-i3K" secondAttribute="bottom" constant="18" id="IyK-72-B3x"/>
                                     <constraint firstItem="p2j-I9-i3K" firstAttribute="top" secondItem="XKy-Oh-fhd" secondAttribute="bottom" constant="23" id="MwW-WT-PhF"/>
                                     <constraint firstItem="iEP-eY-mwE" firstAttribute="leading" secondItem="SDA-8k-gry" secondAttribute="leading" constant="30" id="Nyf-SG-z6p"/>
                                     <constraint firstAttribute="trailing" secondItem="iEP-eY-mwE" secondAttribute="trailing" constant="30" id="RAg-jV-P1x"/>
@@ -134,7 +157,7 @@
                                     <constraint firstItem="73e-jy-tbA" firstAttribute="top" secondItem="iEP-eY-mwE" secondAttribute="bottom" constant="16" id="bOH-gO-xhL"/>
                                     <constraint firstItem="XKy-Oh-fhd" firstAttribute="leading" secondItem="SDA-8k-gry" secondAttribute="leading" constant="53.5" id="s1L-HO-X2y"/>
                                     <constraint firstItem="azp-09-rCb" firstAttribute="leading" secondItem="SDA-8k-gry" secondAttribute="leading" id="wgI-la-9kB"/>
-                                    <constraint firstItem="sCT-ct-x8a" firstAttribute="top" secondItem="73e-jy-tbA" secondAttribute="bottom" constant="30" id="xv4-Ap-foz"/>
+                                    <constraint firstItem="sCT-ct-x8a" firstAttribute="top" secondItem="73e-jy-tbA" secondAttribute="bottom" constant="20" id="xv4-Ap-foz"/>
                                     <constraint firstItem="azp-09-rCb" firstAttribute="top" secondItem="sCT-ct-x8a" secondAttribute="bottom" constant="21" id="z7X-7f-1gr"/>
                                 </constraints>
                             </view>
@@ -151,6 +174,7 @@
                     <connections>
                         <outlet property="contentPrincipalView" destination="SDA-8k-gry" id="SWA-GT-Mhe"/>
                         <outlet property="generosCollectionView" destination="73e-jy-tbA" id="rU2-Ma-4uo"/>
+                        <outlet property="homeView" destination="iEP-eY-mwE" id="7e1-MB-pCE"/>
                         <outlet property="peliculasCollectionView" destination="azp-09-rCb" id="hZI-ki-9wh"/>
                         <outlet property="typeMoviesSegmentedControl" destination="XKy-Oh-fhd" id="vND-a9-E0x"/>
                         <segue destination="Wfc-ZP-XK5" kind="show" id="qn3-oi-CqP"/>
@@ -182,10 +206,10 @@
                                 <rect key="frame" x="152.66666666666666" y="213" width="85" height="34"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBu-nn-PH2">
-                                <rect key="frame" x="147" y="357" width="96" height="28"/>
+                                <rect key="frame" x="147" y="357" width="96" height="14"/>
                                 <color key="backgroundColor" red="0.85098040100000005" green="0.52549022440000004" blue="0.2235293984" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="tickets"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sph-Gn-5uX"/>
@@ -231,6 +255,7 @@
         <image name="batman" width="330" height="200"/>
         <image name="degradado" width="518" height="720"/>
         <image name="playMovie" width="34" height="34"/>
+        <image name="share" width="16" height="16"/>
         <image name="tickets" width="92" height="14"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

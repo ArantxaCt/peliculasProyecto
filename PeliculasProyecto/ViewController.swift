@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     
+    @IBOutlet weak var homeView: UIView!
     @IBOutlet weak var typeMoviesSegmentedControl: UISegmentedControl!
     @IBOutlet weak var contentPrincipalView: UIView!
     @IBOutlet weak var generosCollectionView: UICollectionView!
@@ -37,6 +38,9 @@ class ViewController: UIViewController {
         typeMoviesSegmentedControl.setTitleTextAttributes(titleTextDisable, for: .disabled)
         typeMoviesSegmentedControl.backgroundColor = UIColor(hexString: "1E1F28")
         print("View All Init")
+        
+        homeView.layer.cornerRadius = homeView.frame.size.height / 25.5
+        homeView.layer.masksToBounds = true
         
         //MARK: Generos de películas
         self.generosCollectionView.register(UINib(nibName: "GenerosCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "customCell")
@@ -127,52 +131,53 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         cellMovie?.peliculasNameLabel.text = current?.original_title
-        cellMovie?.peliculasEdadLabel.text = "13+"
+        cellMovie?.peliculasEdadLabel.text = current?.release_date
 
-        switch current?.genre_ids[0] {
-        case 28:
-            cellMovie?.peliculasTipeLabel.text = "Acción"
-        case 12:
-            cellMovie?.peliculasTipeLabel.text = "Aventura"
-        case 16:
-            cellMovie?.peliculasTipeLabel.text = "Animación"
-        case 35:
-            cellMovie?.peliculasTipeLabel.text = "Comedia"
-        case 80:
-            cellMovie?.peliculasTipeLabel.text = "Crimen"
-        case 99:
-            cellMovie?.peliculasTipeLabel.text = "Documental"
-        case 18:
-            cellMovie?.peliculasTipeLabel.text = "Drama"
-        case 10751:
-            cellMovie?.peliculasTipeLabel.text = "Familia"
-        case 14:
-            cellMovie?.peliculasTipeLabel.text = "Fantasia"
-        case 36:
-            cellMovie?.peliculasTipeLabel.text = "Historia"
-        case 27:
-            cellMovie?.peliculasTipeLabel.text = "Terror"
-        case 10402:
-            cellMovie?.peliculasTipeLabel.text = "Música"
-        case 9648:
-            cellMovie?.peliculasTipeLabel.text = "Misterio"
-        case 10749:
-            cellMovie?.peliculasTipeLabel.text = "Romance"
-        case 878:
-            cellMovie?.peliculasTipeLabel.text = "Ciencia Ficción"
-        case 10770:
-            cellMovie?.peliculasTipeLabel.text = "Película de TV"
-        case 53:
-            cellMovie?.peliculasTipeLabel.text = "Suspenso"
-        case 10752:
-            cellMovie?.peliculasTipeLabel.text = "Bélica"
-        case 37:
-            cellMovie?.peliculasTipeLabel.text = "Western"
-        default:
-            cellMovie?.peliculasTipeLabel.text = "N/A"
-        }
+//        switch current?.genre_ids[0] {
+//        case 28:
+//            cellMovie?.peliculasTipeLabel.text = "Acción"
+//        case 12:
+//            cellMovie?.peliculasTipeLabel.text = "Aventura"
+//        case 16:
+//            cellMovie?.peliculasTipeLabel.text = "Animación"
+//        case 35:
+//            cellMovie?.peliculasTipeLabel.text = "Comedia"
+//        case 80:
+//            cellMovie?.peliculasTipeLabel.text = "Crimen"
+//        case 99:
+//            cellMovie?.peliculasTipeLabel.text = "Documental"
+//        case 18:
+//            cellMovie?.peliculasTipeLabel.text = "Drama"
+//        case 10751:
+//            cellMovie?.peliculasTipeLabel.text = "Familia"
+//        case 14:
+//            cellMovie?.peliculasTipeLabel.text = "Fantasia"
+//        case 36:
+//            cellMovie?.peliculasTipeLabel.text = "Historia"
+//        case 27:
+//            cellMovie?.peliculasTipeLabel.text = "Terror"
+//        case 10402:
+//            cellMovie?.peliculasTipeLabel.text = "Música"
+//        case 9648:
+//            cellMovie?.peliculasTipeLabel.text = "Misterio"
+//        case 10749:
+//            cellMovie?.peliculasTipeLabel.text = "Romance"
+//        case 878:
+//            cellMovie?.peliculasTipeLabel.text = "Ciencia Ficción"
+//        case 10770:
+//            cellMovie?.peliculasTipeLabel.text = "Película de TV"
+//        case 53:
+//            cellMovie?.peliculasTipeLabel.text = "Suspenso"
+//        case 10752:
+//            cellMovie?.peliculasTipeLabel.text = "Bélica"
+//        case 37:
+//            cellMovie?.peliculasTipeLabel.text = "Western"
+//        default:
+//            cellMovie?.peliculasTipeLabel.text = "N/A"
+//        }
 
-        cellMovie?.peliculasTipeSalaLabel.text = "IMAX"
+        cellMovie?.peliculasTipeLabel.text = String(current?.vote_average ?? 0.0)
+        cellMovie?.peliculasTipeSalaLabel.text = String(current?.popularity ?? 0.0)
         
         if collectionView == generosCollectionView {
             let cellGeneros = self.generosCollectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as? GenerosCollectionViewCell
