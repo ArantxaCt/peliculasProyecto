@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DdD-61-azP">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="245"/>
+                        <rect key="frame" x="16" y="0.0" width="218" height="245"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="245" id="1TV-mo-9Nc"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJX-YC-SRl">
-                        <rect key="frame" x="32" y="257" width="186" height="42.666666666666686"/>
+                        <rect key="frame" x="16" y="257" width="218" height="42.666666666666686"/>
                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -75,14 +75,14 @@
                 <constraint firstAttribute="bottom" secondItem="zJg-Nk-YEA" secondAttribute="bottom" constant="16" id="Gt1-mr-kLD"/>
                 <constraint firstAttribute="bottom" secondItem="0Wi-Jg-tfM" secondAttribute="bottom" constant="16" id="Q7j-cT-Wak"/>
                 <constraint firstItem="zJg-Nk-YEA" firstAttribute="top" secondItem="yJX-YC-SRl" secondAttribute="bottom" constant="8" id="RDe-MB-eDO"/>
-                <constraint firstItem="DdD-61-azP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UPZ-cM-LiP"/>
-                <constraint firstAttribute="trailing" secondItem="yJX-YC-SRl" secondAttribute="trailing" constant="32" id="c4N-Pf-eGa"/>
+                <constraint firstItem="DdD-61-azP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="UPZ-cM-LiP"/>
+                <constraint firstAttribute="trailing" secondItem="yJX-YC-SRl" secondAttribute="trailing" constant="16" id="c4N-Pf-eGa"/>
                 <constraint firstItem="DdD-61-azP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="c6G-aX-HVv"/>
-                <constraint firstAttribute="trailing" secondItem="DdD-61-azP" secondAttribute="trailing" id="ch3-zN-3Pq"/>
+                <constraint firstAttribute="trailing" secondItem="DdD-61-azP" secondAttribute="trailing" constant="16" id="ch3-zN-3Pq"/>
                 <constraint firstAttribute="trailing" secondItem="Zqq-FR-UNR" secondAttribute="trailing" constant="97" id="d1L-22-7DR"/>
                 <constraint firstItem="Zqq-FR-UNR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="115" id="gRR-ZL-rvp"/>
                 <constraint firstItem="Zqq-FR-UNR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="97" id="mdu-W2-aEi"/>
-                <constraint firstItem="yJX-YC-SRl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="32" id="o3o-FF-tds"/>
+                <constraint firstItem="yJX-YC-SRl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="o3o-FF-tds"/>
                 <constraint firstItem="yJX-YC-SRl" firstAttribute="top" secondItem="DdD-61-azP" secondAttribute="bottom" constant="12" id="rLI-bc-aTz"/>
                 <constraint firstItem="0Wi-Jg-tfM" firstAttribute="top" secondItem="yJX-YC-SRl" secondAttribute="bottom" constant="8" id="ueY-ai-qb8"/>
             </constraints>

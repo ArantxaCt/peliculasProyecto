@@ -21,15 +21,19 @@ class PeliculasCollectionViewCell: UICollectionViewCell {
         peliculasEdadLabel.adjustsFontSizeToFitWidth = true
         peliculasTipeSalaLabel.adjustsFontSizeToFitWidth = true
         peliculasTipeLabel.adjustsFontSizeToFitWidth = true
+        peliculasNameLabel.adjustsFontSizeToFitWidth = true
         
-        peliculasTipeLabel.layer.cornerRadius = peliculasTipeLabel.frame.size.height/4.5
+        peliculasTipeLabel.layer.cornerRadius = peliculasTipeLabel.frame.size.height / 4.5
         peliculasTipeLabel.layer.masksToBounds = true
         
-        peliculasEdadLabel.layer.cornerRadius = peliculasEdadLabel.frame.size.height/4.5
+        peliculasEdadLabel.layer.cornerRadius = peliculasEdadLabel.frame.size.height / 4.5
         peliculasEdadLabel.layer.masksToBounds = true
         
-        peliculasTipeSalaLabel.layer.cornerRadius = peliculasTipeSalaLabel.frame.size.height/4.5
+        peliculasTipeSalaLabel.layer.cornerRadius = peliculasTipeSalaLabel.frame.size.height / 4.5
         peliculasTipeSalaLabel.layer.masksToBounds = true
+        
+        peliculasImageView.layer.cornerRadius = peliculasImageView.frame.size.height / 20
+        peliculasImageView.layer.masksToBounds = true
     }
 
 }
