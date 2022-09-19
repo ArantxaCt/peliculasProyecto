@@ -31,6 +31,7 @@ class DetallePeliculaViewController: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.white
         
         detallePeliculaActivityIndicator.startAnimating()
+        print("DETALLA: \(detallePelicula), \(Movies.self)")
         
         edadPermitidaLabel.text = "13 +"
         edadPermitidaLabel.layer.cornerRadius = edadPermitidaLabel.frame.size.height / 4.5
@@ -92,6 +93,9 @@ class DetallePeliculaViewController: UIViewController {
         
         detalleTituloPeliculaLabel.text = detallePelicula?.original_title
         detalleDescripciónTextView.text = detallePelicula?.overview
+        detalleDescripciónTextView.isEditable = false
+        
+        print("DATA VC: \(detallePelicula?.title)")
 
     }
     
