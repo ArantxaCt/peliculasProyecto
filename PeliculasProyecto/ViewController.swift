@@ -1,0 +1,186 @@
+//
+//  ViewController.swift
+//  PeliculasProyecto
+//
+//  Created by Arantxa Emanth Cuellar Torres on 09/09/22.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    
+    @IBOutlet weak var typeMoviesSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var contentPrincipalView: UIView!
+    @IBOutlet weak var generosCollectionView: UICollectionView!
+    @IBOutlet weak var peliculasCollectionView: UICollectionView!
+    
+    var generos: Generos?
+    var peliculas: resultados?
+    var cambiaGeneros: Int = 18
+    
+    private let cache = NSCache<NSString, UIImage>()
+    private let utilityQueue = DispatchQueue.global(qos: .utility)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        //MARK: Atributos para el segmentControl
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        let titleTextSelected = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        let titleTextDisable = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        
+        typeMoviesSegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        typeMoviesSegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        typeMoviesSegmentedControl.setTitleTextAttributes(titleTextSelected, for: .selected)
+        typeMoviesSegmentedControl.setTitleTextAttributes(titleTextDisable, for: .disabled)
+        typeMoviesSegmentedControl.backgroundColor = UIColor(hexString: "1E1F28")
+        print("View All Init")
+        
+        //MARK: Generos de películas
+        self.generosCollectionView.register(UINib(nibName: "GenerosCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "customCell")
+        
+        self.generosCollectionView.delegate = self
+        self.generosCollectionView.dataSource = self
+        
+        //MARK: Muestra Películas
+        self.peliculasCollectionView.register(UINib(nibName: "PeliculasCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "customCellPeli")
+        self.peliculasCollectionView.delegate = self
+        self.peliculasCollectionView.dataSource = self
+        
+        
+        //MARK: Obtiene todas las peliculas
+        allGeneros {
+            respuesta in
+            self.generos = respuesta
+            self.generosCollectionView.reloadData()
+        }
+        
+        allMovies(genero: String(cambiaGeneros)) {
+            respuesta in
+            self.peliculas = respuesta
+            DispatchQueue.main.async {
+                () -> Void in
+                self.peliculasCollectionView.reloadData()
+            }
+        }
+    }
+    
+    @IBAction func typeMoviesSegmentedControl(_ sender: Any) {
+        switch typeMoviesSegmentedControl.selectedSegmentIndex {
+        case 0:
+            print("View All")
+        case 1:
+            print("View For Kids")
+        default:
+            break
+        }
+    }
+    
+    func loadImage(from url: URL?, completion: @escaping (UIImage?) -> ()) {
+        utilityQueue.async {
+            guard let data = try? Data(contentsOf: (url ?? URL(string: "404"))!) else { return }
+            let image = UIImage(data: data)
+            DispatchQueue.main.async {
+                completion(image)
+            }
+        }
+    }
+}
+
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == generosCollectionView {
+            return generos?.genres.count ?? 0
+        }
+        
+        return peliculas?.results.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cellMovie = self.peliculasCollectionView.dequeueReusableCell(withReuseIdentifier: "customCellPeli", for: indexPath) as? PeliculasCollectionViewCell
+
+        let current = peliculas?.results[indexPath.row]
+        
+        if let poster = current?.poster_path {
+            let imageString = "https://image.tmdb.org/t/p/original" + poster
+            let cacheString = NSString(string: imageString)
+            
+            cellMovie?.peliculasCargaActivityIndicator.startAnimating()
+
+            if let cacheImage = self.cache.object(forKey: cacheString) {
+                cellMovie?.peliculasImageView.image = cacheImage
+                cellMovie?.peliculasCargaActivityIndicator.stopAnimating()
+                cellMovie?.peliculasCargaActivityIndicator.hidesWhenStopped = true
+            } else {
+                self.loadImage(from: URL(string: imageString)) {
+                    [weak self] (image) in
+                    guard let self = self, let image = image else { return }
+                    cellMovie?.peliculasImageView.image = image
+                    self.cache.setObject(image, forKey: cacheString)
+                    cellMovie?.peliculasCargaActivityIndicator.stopAnimating()
+                    cellMovie?.peliculasCargaActivityIndicator.hidesWhenStopped = true
+                }
+            }
+        }
+        
+        cellMovie?.peliculasNameLabel.text = current?.original_title
+        cellMovie?.peliculasEdadLabel.text = "13+"
+
+        switch current?.genre_ids[0] {
+        case 28:
+            cellMovie?.peliculasTipeLabel.text = "Acción"
+        case 12:
+            cellMovie?.peliculasTipeLabel.text = "Aventura"
+        case 16:
+            cellMovie?.peliculasTipeLabel.text = "Animación"
+        case 35:
+            cellMovie?.peliculasTipeLabel.text = "Comedia"
+        case 80:
+            cellMovie?.peliculasTipeLabel.text = "Crimen"
+        case 99:
+            cellMovie?.peliculasTipeLabel.text = "Documental"
+        case 18:
+            cellMovie?.peliculasTipeLabel.text = "Drama"
+        case 10751:
+            cellMovie?.peliculasTipeLabel.text = "Familia"
+        case 14:
+            cellMovie?.peliculasTipeLabel.text = "Fantasia"
+        case 36:
+            cellMovie?.peliculasTipeLabel.text = "Historia"
+        case 27:
+            cellMovie?.peliculasTipeLabel.text = "Terror"
+        case 10402:
+            cellMovie?.peliculasTipeLabel.text = "Música"
+        case 9648:
+            cellMovie?.peliculasTipeLabel.text = "Misterio"
+        case 10749:
+            cellMovie?.peliculasTipeLabel.text = "Romance"
+        case 878:
+            cellMovie?.peliculasTipeLabel.text = "Ciencia Ficción"
+        case 10770:
+            cellMovie?.peliculasTipeLabel.text = "Película de TV"
+        case 53:
+            cellMovie?.peliculasTipeLabel.text = "Suspenso"
+        case 10752:
+            cellMovie?.peliculasTipeLabel.text = "Bélica"
+        case 37:
+            cellMovie?.peliculasTipeLabel.text = "Western"
+        default:
+            cellMovie?.peliculasTipeLabel.text = "N/A"
+        }
+
+        cellMovie?.peliculasTipeSalaLabel.text = "IMAX"
+        
+        if collectionView == generosCollectionView {
+            let cellGeneros = self.generosCollectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as? GenerosCollectionViewCell
+            let generosMuestra = generos?.genres[indexPath.row]
+            cellGeneros?.generosLabel.text = generosMuestra?.name
+            return cellGeneros!
+        }
+        
+        return cellMovie!
+    }
+}
