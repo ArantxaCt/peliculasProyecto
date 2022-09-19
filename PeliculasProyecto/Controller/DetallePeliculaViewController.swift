@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import UserNotifications
+
+let notificaBoletos = "Tickets"
 
 class DetallePeliculaViewController: UIViewController {
 
@@ -123,8 +126,25 @@ class DetallePeliculaViewController: UIViewController {
             }
         }
     }
+    
+    func alertWithTitle(title: String!, message: String, handlerOK:  ((UIAlertAction) -> Void)? ) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "¡Lo tengo!", style: .cancel, handler: handlerOK)
+        alert.addAction(action)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+     }
 
     @IBAction func getTicketsButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        let notifi = UNUserNotificationCenter.current()
+        
+        let title = "¡Listo!"
+        
+        let message = "Tu compra se ha efectuado, tus boletos para la pelicula '\(detallePelicula!.title)' están listos"
+        
+        alertWithTitle(title: title, message: message, handlerOK: {
+            action in self.navigationController?.popViewController(animated: true)
+        })
     }
 }

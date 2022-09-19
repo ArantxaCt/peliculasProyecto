@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("View All Init")
         
         //MARK: Atributos para el segmentControl
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -38,7 +39,6 @@ class ViewController: UIViewController {
         typeMoviesSegmentedControl.setTitleTextAttributes(titleTextSelected, for: .selected)
         typeMoviesSegmentedControl.setTitleTextAttributes(titleTextDisable, for: .disabled)
         typeMoviesSegmentedControl.backgroundColor = UIColor(hexString: "1E1F28")
-        print("View All Init")
         
         homeView.layer.cornerRadius = homeView.frame.size.height / 25.5
         homeView.layer.masksToBounds = true
@@ -166,7 +166,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         if collectionView == peliculasCollectionView {
             infoMovies = peliculas!.results[indexPath.row]
             performSegue(withIdentifier: "cellInfo", sender: self)
-            print("Inof movies: \(infoMovies)")
         }
     }
     
