@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     
+    @IBOutlet weak var homeImageView: UIImageView!
     @IBOutlet weak var homeView: UIView!
     @IBOutlet weak var typeMoviesSegmentedControl: UISegmentedControl!
     @IBOutlet weak var contentPrincipalView: UIView!
@@ -20,6 +21,7 @@ class ViewController: UIViewController {
     var peliculas: resultados?
     var cambiaGeneros: Int = 28
     var infoMovies: Movies?
+    var noGenero = Generos.init(genres: [Genre]())
     
     private let cache = NSCache<NSString, UIImage>()
     private let utilityQueue = DispatchQueue.global(qos: .utility)
@@ -75,9 +77,59 @@ class ViewController: UIViewController {
     @IBAction func typeMoviesSegmentedControl(_ sender: Any) {
         switch typeMoviesSegmentedControl.selectedSegmentIndex {
         case 0:
-            print("View All")
+            allMovies(genero: "28") {
+                respuesta in
+                self.peliculas = respuesta
+                let ninosInfo = self.peliculas?.results[0]
+                
+                self.homeImageView.image = UIImage(named: "batman")
+                
+                DispatchQueue.main.async {
+                    () -> Void in
+                    self.peliculasCollectionView.reloadData()
+                }
+                
+                allGeneros(completion: {
+                    resultados in
+                    self.generos = resultados
+                    DispatchQueue.main.async {
+                        () -> Void in
+                        self.generosCollectionView.reloadData()
+                    }
+                })
+            }
         case 1:
-            print("View For Kids")
+            allMovies(genero: "16") {
+                respuesta in
+                self.peliculas = respuesta
+                let ninosInfo = self.peliculas?.results[0]
+                
+                if let poster = ninosInfo?.poster_path {
+                    let imageString = "https://image.tmdb.org/t/p/original" + poster
+                    let cacheString = NSString(string: imageString)
+                    if let cacheImage = self.cache.object(forKey: cacheString) {
+                        self.homeImageView.image = cacheImage
+                    } else {
+                        self.loadImage(from: URL(string: imageString)) {
+                            [weak self] (image) in
+                            guard let self = self, let image = image else { return }
+                            self.homeImageView.image = image
+                            self.cache.setObject(image, forKey: cacheString)
+                        }
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    () -> Void in
+                    self.peliculasCollectionView.reloadData()
+                }
+                
+                self.generos = self.noGenero
+                DispatchQueue.main.async {
+                    () -> Void in
+                    self.generosCollectionView.reloadData()
+                }
+            }
         default:
             break
         }
