@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
+    @IBOutlet weak var tituloPaliculaLabel: UILabel!
     @IBOutlet weak var homeImageView: UIImageView!
     @IBOutlet weak var homeView: UIView!
     @IBOutlet weak var typeMoviesSegmentedControl: UISegmentedControl!
@@ -79,10 +79,38 @@ class ViewController: UIViewController {
         case 0:
             allMovies(genero: "28") {
                 respuesta in
-                self.peliculas = respuesta
-                let ninosInfo = self.peliculas?.results[0]
                 
-                self.homeImageView.image = UIImage(named: "batman")
+                self.peliculas = respuesta
+                let random = Int.random(in: 1...15)
+                let ninosInfo = self.peliculas?.results[random]
+                
+                self.tituloPaliculaLabel.text = ""
+                
+                if let poster = ninosInfo?.poster_path {
+                    let imageString = "https://image.tmdb.org/t/p/original" + poster
+                    let cacheString = NSString(string: imageString)
+                    if let cacheImage = self.cache.object(forKey: cacheString) {
+                        self.homeImageView.image = cacheImage
+                    } else {
+                        self.loadImage(from: URL(string: imageString)) {
+                            [weak self] (image) in
+                            guard let self = self, let image = image else { return }
+                            self.homeImageView.image = image
+                            self.cache.setObject(image, forKey: cacheString)
+                        }
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    () -> Void in
+                    self.peliculasCollectionView.reloadData()
+                }
+                
+                self.generos = self.noGenero
+                DispatchQueue.main.async {
+                    () -> Void in
+                    self.generosCollectionView.reloadData()
+                }
                 
                 DispatchQueue.main.async {
                     () -> Void in
@@ -102,7 +130,10 @@ class ViewController: UIViewController {
             allMovies(genero: "16") {
                 respuesta in
                 self.peliculas = respuesta
-                let ninosInfo = self.peliculas?.results[0]
+                let random = Int.random(in: 1...15)
+                let ninosInfo = self.peliculas?.results[random]
+                
+                self.tituloPaliculaLabel.text = ""
                 
                 if let poster = ninosInfo?.poster_path {
                     let imageString = "https://image.tmdb.org/t/p/original" + poster
