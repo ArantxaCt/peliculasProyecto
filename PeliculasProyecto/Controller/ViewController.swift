@@ -268,6 +268,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailsVC = segue.destination as? DetallePeliculaViewController {
             detailsVC.detallePelicula = infoMovies
+            detailsVC.delegado = self
         }
     }
 }

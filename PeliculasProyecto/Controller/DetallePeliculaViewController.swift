@@ -27,6 +27,8 @@ class DetallePeliculaViewController: UIViewController {
     
     var delegado: Alerta!
     
+    var name: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -153,9 +155,8 @@ class DetallePeliculaViewController: UIViewController {
     }
 
     @IBAction func getTicketsButton(_ sender: Any) {
-        AlertaNotifica()
         self.navigationController?.popViewController(animated: true)
-//        AlertaNotifica()
+        AlertaNotifica()
         delegado?.pAlerta(detallePelicula?.original_title ?? "No name")
     }
 }
