@@ -8,8 +8,6 @@
 import UIKit
 import UserNotifications
 
-let notificaBoletos = "Tickets"
-
 class DetallePeliculaViewController: UIViewController {
 
     @IBOutlet weak var detalleDescripciónTextView: UITextView!
@@ -26,6 +24,8 @@ class DetallePeliculaViewController: UIViewController {
     
     private let cache = NSCache<NSString, UIImage>()
     private let utilityQueue = DispatchQueue.global(qos: .utility)
+    
+    var delegado: Alerta!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,24 +127,35 @@ class DetallePeliculaViewController: UIViewController {
         }
     }
     
-    func alertWithTitle(title: String!, message: String, handlerOK:  ((UIAlertAction) -> Void)? ) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "¡Lo tengo!", style: .cancel, handler: handlerOK)
-        alert.addAction(action)
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
+    func AlertaNotifica(){
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
+            success, error in
+            if success {
+                print("Todo ok")
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
         }
-     }
+        
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        let content = UNMutableNotificationContent()
+        content.title = "Gracias por tu compra."
+        
+        if let name = detallePelicula?.original_title {
+            content.body = "La película \(name) comienza pronto."
+            print("PELINAME: \(name)")
+        }
+        
+        content.sound = UNNotificationSound.default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+    }
 
     @IBAction func getTicketsButton(_ sender: Any) {
-        let notifi = UNUserNotificationCenter.current()
-        
-        let title = "¡Listo!"
-        
-        let message = "Tu compra se ha efectuado, tus boletos para la pelicula '\(detallePelicula!.title)' están listos"
-        
-        alertWithTitle(title: title, message: message, handlerOK: {
-            action in self.navigationController?.popViewController(animated: true)
-        })
+        self.navigationController?.popViewController(animated: true)
+        AlertaNotifica()
+        delegado?.pAlerta(detallePelicula?.original_title ?? "No name")
     }
 }

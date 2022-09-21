@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, Alerta {
     
     @IBOutlet weak var tituloPaliculaLabel: UILabel!
     @IBOutlet weak var homeImageView: UIImageView!
@@ -174,6 +174,19 @@ class ViewController: UIViewController {
                 completion(image)
             }
         }
+    }
+    
+    func pAlerta(_ string: String) {
+
+        let title = "¡Listo!"
+
+        let message = "Tu compra se ha efectuado, tus boletos para la pelicula '\(string)' están listos"
+
+        let alertaNoti = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        alertaNoti.addAction(UIAlertAction(title: "¡Entendido!", style: UIAlertAction.Style.default, handler: nil))
+        
+        self.present(alertaNoti, animated: true, completion: nil)
     }
 }
 
