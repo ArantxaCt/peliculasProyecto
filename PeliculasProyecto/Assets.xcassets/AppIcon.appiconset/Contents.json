@@ -1,21 +1,25 @@
 {
   "images" : [
     {
+      "filename" : "icons8-movie-40.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "icons8-movie-60.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
+      "filename" : "icons8-movie-58.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "icons8-movie-87.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
@@ -41,6 +45,7 @@
       "size" : "60x60"
     },
     {
+      "filename" : "icons8-movie-20.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"

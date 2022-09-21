@@ -143,7 +143,6 @@ class DetallePeliculaViewController: UIViewController {
         
         if let name = detallePelicula?.original_title {
             content.body = "La película \(name) comienza pronto."
-            print("PELINAME: \(name)")
         }
         
         content.sound = UNNotificationSound.default
@@ -154,8 +153,9 @@ class DetallePeliculaViewController: UIViewController {
     }
 
     @IBAction func getTicketsButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
         AlertaNotifica()
+        self.navigationController?.popViewController(animated: true)
+//        AlertaNotifica()
         delegado?.pAlerta(detallePelicula?.original_title ?? "No name")
     }
 }
